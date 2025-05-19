@@ -3,10 +3,10 @@ pipeline{
     stages{
         stage('check node versions'){
             steps{
-                script{
-                    sh node -v
-                    sh npm -v
-                }
+                sh '''
+                    node -v
+                    npm -v
+                '''
             }
         }
     }
