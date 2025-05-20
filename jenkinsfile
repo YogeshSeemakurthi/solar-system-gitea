@@ -27,9 +27,9 @@ pipeline{
                 }
                 stage('owasp dependency audit'){
                     steps{
-                        dependencyCheck additionalArguments: '''--scan \\\'./\\\'
-                        --format \\\'ALL\\\'
-                        ''', odcInstallation: 'owasp-dependency-check-12-1-1'
+                        dependencyCheck additionalArguments: '''-f ALL
+                            -o ./
+                            --scan ./''', odcInstallation: 'owasp-dependency-check-12-1-1'
                     }
                 }
             }
