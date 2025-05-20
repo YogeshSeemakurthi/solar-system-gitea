@@ -18,10 +18,23 @@ pipeline{
                 sh 'npm install --no-audit'
             }
         }
-        stage('npm dependency audit'){
-            steps{
-                sh 'npm audit --audit-level=critical'
+        stage('dependency audit'){
+            parallel{
+                stage('npm dependency audit'){
+                    steps{
+                        sh 'npm audit --audit-level=critical'
+                    }
+                }
+                stage('owasp dependency audit'){
+                    steps{
+                        dependencyCheck additionalArguments: '''--scan \\\'./\\\'
+                        --format \\\'ALL\\\'
+                        ''', odcInstallation: 'owasp-dependency-check-12-1-1'
+                    }
+                }
             }
+
         }
+        
     }
 }
