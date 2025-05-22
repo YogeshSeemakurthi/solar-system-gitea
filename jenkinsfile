@@ -50,8 +50,9 @@ pipeline{
         stage('Unit testing'){
             steps{
                 withCredentials([usernamePassword(credentialsId: 'cloudmongodbcreds', passwordVariable: 'MONGO_USERNAME', usernameVariable: 'MONGO_PASSWORD')]) {
+                    sh 'npm install mongoose@latest'
                     sh 'npm test'
-                    sh 'node --trace-deprecation'
+
                 }
 
             }
