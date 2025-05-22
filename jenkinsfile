@@ -5,7 +5,7 @@ pipeline{
         nodejs 'node-24-0-2'
     }
     environment {
-        MONGO_URI = "mongodb+srv://cluster0.kvbzueg.mongodb.net?retryWrites=true&w=majority&appName=Cluster0"
+        MONGO_URI = "mongodb+srv://yogeshseemakurthi94:yogeshseemakurthi94@cluster0.kvbzueg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
     }
 
     stages{
