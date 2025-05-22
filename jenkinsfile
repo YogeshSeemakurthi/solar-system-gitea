@@ -44,7 +44,7 @@ pipeline{
         }
         stage('echo'){
             steps{
-                sh 'echo "running anothe stage"'
+                sh 'echo "running another stage"'
             }
         }
         
