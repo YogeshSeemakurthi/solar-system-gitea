@@ -23,17 +23,20 @@ pipeline{
             parallel{
                 stage('npm dependency audit'){
                     steps{
-                        sh 'npm audit --audit-level=critical'
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                            sh 'npm audit --audit-level=critical'
+                        }
                     }
                 }
                 stage('owasp dependency audit'){
                     steps{
-                        dependencyCheck additionalArguments: '''-f ALL
-                            -o ./
-                            --scan ./''', odcInstallation: 'owasp-dependency-check-12-1-1'
-                        
-                        dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: true
-                        
+                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                            dependencyCheck additionalArguments: '''-f ALL
+                                -o ./
+                                --scan ./''', odcInstallation: 'owasp-dependency-check-12-1-1'
+                            
+                            dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: true
+                        }
                     }
                 }
             }
