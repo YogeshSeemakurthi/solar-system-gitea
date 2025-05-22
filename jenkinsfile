@@ -50,6 +50,7 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(credentialsId: 'cloudmongodbcreds', passwordVariable: 'MONGO_USERNAME', usernameVariable: 'MONGO_PASSWORD')]) {
                     sh 'npm test'
+                    sh 'node --trace-deprecation'
                 }
 
             }
