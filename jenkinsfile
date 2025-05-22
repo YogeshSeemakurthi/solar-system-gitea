@@ -14,8 +14,6 @@ pipeline{
                 sh '''
                     node -v
                     npm -v
-                    yarn --version
-                    node --trace-deprecation
                 '''
             }
         }
