@@ -42,6 +42,11 @@ pipeline{
             }
 
         }
+        stage('echo'){
+            steps{
+                sh 'echo "running anothe stage"'
+            }
+        }
         
     }
 }
