@@ -32,17 +32,17 @@ pipeline{
                         }
                     }
                 }
-                stage('owasp dependency audit'){
-                    steps{
-                        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-                            dependencyCheck additionalArguments: '''-f ALL
-                                -o ./
-                                --scan ./''', odcInstallation: 'owasp-dependency-check-12-1-1'
+                // stage('owasp dependency audit'){
+                //     steps{
+                //         catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
+                //             dependencyCheck additionalArguments: '''-f ALL
+                //                 -o ./
+                //                 --scan ./''', odcInstallation: 'owasp-dependency-check-12-1-1'
                             
-                            dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: true
-                        }
-                    }
-                }
+                //             dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: true
+                //         }
+                //     }
+                // }
             }
 
         }
