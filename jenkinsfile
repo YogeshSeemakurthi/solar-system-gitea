@@ -48,7 +48,7 @@ pipeline{
         }
         stage('Unit testing'){
             steps{
-                withCredentials([usernamePassword(credentialsId: 'mongodbcreds', passwordVariable: 'MONGO_PASSWORD', usernameVariable: 'MONGO_USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'cloudmongodbcreds', passwordVariable: 'MONGO_USERNAME', usernameVariable: 'MONGO_PASSWORD')]) {
                     sh 'npm test'
                 }
 
