@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     tools{
-        nodejs 'node-24-0-2'
+        nodejs 'node-22-6-0'
     }
     environment {
         MONGO_URI = "mongodb+srv://cluster0.kvbzueg.mongodb.net/superData"
