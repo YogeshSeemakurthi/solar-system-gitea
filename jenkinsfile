@@ -31,6 +31,9 @@ pipeline{
                         dependencyCheck additionalArguments: '''-f ALL
                             -o ./
                             --scan ./''', odcInstallation: 'owasp-dependency-check-12-1-1'
+                        
+                        dependencyCheckPublisher failedTotalCritical: 1, pattern: 'dependency-check-report.xml', stopBuild: true
+                        
                     }
                 }
             }
