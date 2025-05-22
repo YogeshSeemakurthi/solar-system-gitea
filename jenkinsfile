@@ -42,9 +42,9 @@ pipeline{
             }
 
         }
-        stage('echo'){
+        stage('Unit testing'){
             steps{
-                sh 'echo "running another stage"'
+                sh 'npm test'
             }
         }
         
